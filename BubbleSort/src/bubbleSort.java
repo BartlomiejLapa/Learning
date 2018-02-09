@@ -20,5 +20,25 @@ public class bubbleSort {
             System.out.print(", ");
         }
 
+        //sortowanie bombelkowe
+        int tmp;
+
+        for (int j = 0; j < array.length;j++) {
+            for (i = 0; i < array.length - 1; i++) {
+                if (array[i] > array[i + 1]) {
+                    tmp = array[i + 1];
+                    array[i + 1] = array[i];
+                    array[i] = tmp;
+                }
+            }
+        }
+
+        //wyswietlenie tabeli posrotowanej
+        System.out.println("\nTablica posortowana: ");
+        for (i = 0; i <array.length; i++) {
+            System.out.print (array[i]);
+            if (i == array.length-1) continue;
+            System.out.print(", ");
+        }
     }
 }
