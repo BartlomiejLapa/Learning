@@ -1,15 +1,16 @@
 import java.util.Scanner;
 class EncodeData{
-    String msg;
+    String msg, key;
     String encmsg = "";
     String decmsg = "";
-    String key = "AjeFEXsd346aFX";
 
-    EncodeData(String msg){
+
+    EncodeData(String msg, String key){
         this.msg = msg;
+        this.key = key;
     }
 
-     String encrypt(){
+    String encrypt(){
         int j = 0;
         for(int i=0; i<msg.length (); i++){
             encmsg =  encmsg + (char) (msg.charAt(i) ^ key.charAt(j));
@@ -33,12 +34,15 @@ class EncodeData{
 public class Encode {
     public static void main (String args[]){
         String msg;
-
-        System.out.println("Podaj tekst do zaszyfrowania ");
+        String key;
 
         Scanner read = new Scanner (System.in);
+        System.out.println ("Podaj wartosc klucza szyfrowania ASCII: ");
+        key = read.nextLine ();
+
+        System.out.println("Podaj tekst do zaszyfrowania ");
         msg = read.nextLine ();
-        EncodeData message = new EncodeData (msg);
+        EncodeData message = new EncodeData (msg, key);
 
 
         System.out.println ("Wiadomość: " + msg + " Szyfrowana kluczem " + "\"" + message.key + "\"" +
@@ -49,3 +53,4 @@ public class Encode {
 
     }
 }
+
