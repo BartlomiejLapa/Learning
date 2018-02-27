@@ -10,13 +10,16 @@ class EncodeData{
         this.key = key;
     }
 
-    String encrypt(){
+   void encrypt(String msg){
         int j = 0;
         for(int i=0; i<msg.length (); i++){
             encmsg =  encmsg + (char) (msg.charAt(i) ^ key.charAt(j));
             j++;
             if (j == key.length ()) j=0;
         }
+   }
+
+   String getEncrypt(){
        return encmsg;
     }
 
@@ -28,6 +31,7 @@ class EncodeData{
              if (j == key.length ()) j=0;
          }
          return decmsg;
+
     }
 }
 
@@ -43,11 +47,12 @@ public class Encode {
         System.out.println("Podaj tekst do zaszyfrowania ");
         msg = read.nextLine ();
         EncodeData message = new EncodeData (key);
-        message.msg=msg;
+        message.encrypt (msg);
+
 
 
         System.out.println ("Wiadomość: " + msg + " Szyfrowana kluczem " + "\"" + message.key + "\"" +
-                "\n Zaszyfrowana brzmi: " + "\"" + message.encrypt() + "\"");
+                "\n Zaszyfrowana brzmi: " + "\"" +  message.getEncrypt() + "\"");
         System.out.println ("\nWiadomosc odszyfrowana(kontrola): " + message.decrypt() );
 
 
