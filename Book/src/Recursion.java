@@ -8,7 +8,7 @@ class Recurs {
 
     }
     void viewer (int n){
-        int[] view = new int[n-1];
+        int[] view = new int[n];
 
         for (int i =0; i < view.length ; i++) {
             view[i] = n;
