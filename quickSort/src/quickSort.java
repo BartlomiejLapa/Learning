@@ -1,68 +1,42 @@
-import java.util.Random;
-public class quickSort {
-    public static void main (String args[]){
+class Qs {
+    static void qsort(char items[]) {
+        qs (items, 0, items.length - 1);
+    }
+    private static void qs(char items[], int left,int right){
+        int i, j;
+        char x,y;
 
-//        int array[] = new int[9];
-//        Random random = new Random();
-//
-//        System.out.println("Tablica nieposrtowana: ");
-//        for (int i = 0; i < array.length; i++){
-//            array[i] = random.nextInt( 25+5+1) -5;
-//            System.out.print(array[i]);
-//            if (i == array.length-1) continue;
-//            System.out.print(", ");
-//        }
+        i = left; j = right;
+        x = items[(left+right)/2];
 
-    int array[] = {14, 17, 5, 0, 11, 12, 18, 21, 5, 3, 4};
+        do {
+            while((items[i] < x) && (i < right)) i++;
+            while((x < items[j]) && (j > left)) j--;
 
-        System.out.println("\nTablica nieposortowana: ");
-        for (int i = 0; i < array.length; i++){
-            System.out.print(array[i]);
-            if (i == array.length-1) continue;
-            System.out.print(", ");
-        }
-
-    //quicksort
-
-        //znalezienie pivotu
-        int pivot = array[array.length/2];
-        int pivotIndex = array.length/2;
-        System.out.println("\nWartosc Pivota: " + pivot + "\nindex tablicy: [" + pivotIndex + "]");
-
-        //zamiana pivotu z ostatnią wartoscią tablicy
-        int tmp;
-        tmp = array[array.length-1];
-        array[array.length-1] = pivot;
-        array[array.length/2] = tmp;
-
-        //szukanie mniejszej liczby od pivota
-        int a,b;
-        int z=0;
-
-        for (int i=0; i < array.length; i++){
-            if (array[i] > pivot) continue;
-            a = array[i];
-
-            for (int j=z; j < array.length ; j++) {
-                b = array[j];
-                array[i] = b;
-                array[j] = a;
-
-                //bedzie zaczynac ponownie petle od pozycji o 1 wieksza
-                z = j + 1;
-                break;
+            if(i <= j){
+                y = items[i];
+                items[i] = items[j];
+                items[j] = y;
+                i++; j--;
             }
-        }
+        }while (i <=j);
+        if (left < j) qs(items, left, j);
+        if (i < right) qs(items, i, right);
+    }
+}
 
+class quickSort {
+    public static void main (String args[]){
+        char a[] = {'d', 'z', 'a', 'h', 'i', 'o'};
+        int i;
 
+        System.out.print ("Tablica przed posrotowaniem: ");
+        for (i = 0; i < a.length; i++) System.out.print (a[i] + " ");
+        System.out.println();
 
+        Qs.qsort (a);
 
-        System.out.println("\nTablica posrtowana: ");
-        for (int i = 0; i < array.length; i++){
-            System.out.print(array[i]);
-            if (i == array.length-1) continue;
-            System.out.print(", ");
-        }
-
+        System.out.print (" Tablica posortowana:");
+        for (i =0; i < a.length; i++) System.out.print (a[i] + " ");
     }
 }
