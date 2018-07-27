@@ -1,8 +1,12 @@
 import com.sun.org.apache.regexp.internal.RE;
+import static java.lang.Math.*;
 
+
+import java.lang.*;
+import java.lang.Override;
 import java.util.concurrent.RecursiveTask;
 
-class TwoDShape2{
+abstract class TwoDShape2{
     private double width;
     private double height;
     private String name;
@@ -49,13 +53,30 @@ class TwoDShape2{
         System.out.println ("Szer i wys " + width + " i " + height);
     }
 
-    double area(){
-        System.out.println ("area() musi byc przeslonieta w klasach pochodnych");
-        return 0.0;
-    }
+    abstract double area();
 
 }
 
+class Circle extends TwoDShape2{
+    private String style;
+    Circle(){
+        super();
+        style = "nieokreslony";
+    }
+    Circle(double r){
+        super(r, "Okrąg");
+    }
+
+    Circle(Circle ob){
+        super(ob);
+    }
+
+    @Override
+    double area() {
+       return (getWidth ()* getWidth () * Math.PI)/4 ;
+    }
+
+}
 class Triangle3 extends TwoDShape2{
     private String style;
 
@@ -119,6 +140,9 @@ class Rectagle extends TwoDShape2{
 
 }
 
+
+
+
 public class DynShapes {
     public static void main(String args[]) {
         TwoDShape2 shapes[] = new TwoDShape2[5];
@@ -127,7 +151,8 @@ public class DynShapes {
         shapes[1] = new Rectagle (10);
         shapes[2] = new Rectagle (10, 5);
         shapes[3] = new Triangle3 (7.7);
-        shapes[4] = new TwoDShape2 (11, 22, "ogolny");
+        shapes[4] = new Circle (10);
+
 
         for (int i=0; i<shapes.length; i++){
             System.out.println ("Typ obiektu: " + shapes[i].getName ());
