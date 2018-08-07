@@ -2,7 +2,7 @@ package exceptions;
 
 class Devide {
     double array1[],array2[];
-    int putloc;
+    private int putloc;
     int size;
 
 
@@ -26,7 +26,7 @@ class Devide {
         for (int i=0; i < putloc+1 && i < array2.length; i++) System.out.print (array2[i] + " ");
     }
     void deviding() {
-        for (int i=0; i < putloc+1 && i < array1.length && i < array2.length; i++) System.out.println (array1[i] + ":" + array2[i] + " = " + array1[i]/array2[i]);
+        for (int i=0; i < putloc+1 && i < array1.length && i < array2.length; i++) System.out.println (array1[i] + ":" + array2[i] + " = " + (int)array1[i]/(int)array2[i]);
     }
 }
 
@@ -39,8 +39,8 @@ public class ExcDevide {
 
             for (int i = 0; i < devide.size; i++) {
                 double z, y;
-                z = i * 33 / 5 + 7;
-                y = i;
+                z = i * 33.1 / 5 + 7;
+                y = devide.size-3-i;
                 devide.putArray (z, y);
             }
             devide.showArray ( );
