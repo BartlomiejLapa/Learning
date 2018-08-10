@@ -7,7 +7,7 @@ class Pierwiastkowanie {
 
     static void sqrtNumber(int number) {
         result = (int) Math.sqrt(number);
-        System.out.println("Pierwiastek z " + number + " wynosi " + result);
+        System.out.format("%s %d %s  %d ", "Pierwiastek z ", number ," wynosi ", result);
 
     }
 
