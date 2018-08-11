@@ -57,7 +57,7 @@ public class QExc {
                 System.out.print((char)('A' + i) + " ");
                 kłueue.put((char) ('A' + i));
             } catch (QueueFullException exc) {
-                System.out.println("\n### Kolejka pełna");
+                System.out.println(exc);
             }
         }
 
@@ -69,7 +69,7 @@ public class QExc {
                 ch = kłueue.get();
                 System.out.print(ch + " ");
             } catch (QueueEmptyException exc) {
-                System.out.println("\n### Kolejka pusta");
+                System.out.println(exc);
             }
         }
 
