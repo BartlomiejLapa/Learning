@@ -1,7 +1,6 @@
 package io;
 
 import java.io.BufferedWriter;
-import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
@@ -9,8 +8,8 @@ import java.util.Scanner;
 class TakeWriter  {
     private String file;
     private String path = "Book\\src\\io\\";
-    String message;
-    String pathFile;
+    private String message;
+    private String pathFile;
     BufferedWriter saving = null;
 
 
