@@ -1,9 +1,6 @@
 package io;
 
-import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
-
 import java.io.BufferedWriter;
-import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
