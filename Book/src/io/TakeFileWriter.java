@@ -6,17 +6,20 @@ import java.io.IOException;
 import java.util.Scanner;
 
 class TakeWriter {
-    private String pathFile;
-    private String message;
-
+    private String file;
+    private String path = "C:\\Users\\bluefusion\\IdeaProjects\\Learning\\Book\\src\\io\\";
+    String message;
+    String pathFile = "C:\\Users\\bluefusion\\IdeaProjects\\Learning\\Book\\src\\io\\file3.txt";
     BufferedWriter saving = null;
 
 
 
-    void setPathFile() throws IOException {
-        System.out.println("Podaj sciezke do pliku tekstowego");
+/*    void setPathFile() throws IOException {
+        System.out.println("Podaj nazwe i rozszerzenei pliku");
         Scanner reading = new Scanner(System.in);
-        pathFile = reading.nextLine();
+        file = reading.nextLine();
+        pathFile = new StringBuilder(path).append(file).toString();
+        System.out.println(pathFile);
         try {
             BufferedWriter saving = new BufferedWriter(new FileWriter(pathFile));
 
@@ -25,25 +28,30 @@ class TakeWriter {
                 saving.close();
             }
         }
-    }
+    }*/
 
     void getMessage() throws IOException {
-        System.out.println("Podaj wiadomosc do zapisania, w celu zatrzymania wcisnij \"-\" ");
-        Scanner reading = new Scanner(System.in);
+
+        try {
+            Scanner reading = new Scanner(System.in);
+            BufferedWriter saving = new BufferedWriter(new FileWriter(pathFile, true));
         do {
-            message = reading.nextLine() + System.lineSeparator();
+            System.out.println("Podaj wiadomosc do zapisania, w celu zatrzymania wcisnij \"-\" ");
+            message = reading.nextLine();
+            saving.write(message);
+            saving.newLine();
+            saving.close();
 
-            try {
-                BufferedWriter saving = new BufferedWriter(new FileWriter(pathFile));
-                saving.write(message);
-            } finally {
-                if (saving != null) {
-                    saving.close();
-                    saving.flush();
-                }
+        } while (!message.equals("-"));
+
+
+        } finally {
+            if (saving != null) {
+                saving.close();
+
+
             }
-
-        } while (reading.nextLine() != "-");
+        }
     }
 }
 
@@ -55,7 +63,7 @@ public class TakeFileWriter {
 
         TakeWriter start = new TakeWriter();
 
-        start.setPathFile();
+//        start.setPathFile();
         start.getMessage();
 
 
