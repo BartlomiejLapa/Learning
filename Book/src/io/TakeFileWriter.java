@@ -8,13 +8,10 @@ import java.util.Scanner;
 
 class TakeWriter  {
     private String file;
-    private String path = "C:\\Users\\bluefusion\\IdeaProjects\\Learning\\Book\\src\\io\\";
+    private String path = "Book\\src\\io\\";
     String message;
     String pathFile;
     BufferedWriter saving = null;
-
-    TakeWriter() throws IOException {
-    }
 
 
     void setPathFile() throws IOException {
@@ -31,7 +28,7 @@ class TakeWriter  {
                 saving.close();
             }
         }
-        System.out.print(pathFile);
+        System.out.print("Sciezka do pliku: " + pathFile);
     }
 
     void getMessage() throws IOException {
@@ -41,18 +38,17 @@ class TakeWriter  {
 
             Scanner reading = new Scanner(System.in);
             System.out.print("#### Aby wyczyscic plik wpisz \"null\" ####\n");
+            BufferedWriter saving = new BufferedWriter(new FileWriter(pathFile, true));
         do {
             System.out.println("Podaj wiadomosc do zapisania, w celu zatrzymania zostaw puste pole i wcisnij enter.");
-            BufferedWriter saving = new BufferedWriter(new FileWriter(pathFile, true));
             message = reading.nextLine();
             saving.write(message);
-            if (message.equals("null")) clearFile();
             saving.newLine();
-            saving.close();
+            if (message.equals("null")) clearFile();
 
 
         } while (!message.equals(""));
-
+            saving.close();
 
         } finally {
             if (saving != null) {
