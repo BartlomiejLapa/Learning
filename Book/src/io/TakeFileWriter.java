@@ -4,13 +4,20 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
+import java.net.URL;
+import java.net.URI;
+import java.io.File;
 
 class TakeWriter  {
     private String file;
-    private String path = "Book\\src\\io\\";
+    private String path = new String("Book\\src\\io\\");
     private String message;
     private String pathFile;
     BufferedWriter saving = null;
+
+
+
+
 
 
     void setPathFile() throws IOException {
@@ -18,23 +25,24 @@ class TakeWriter  {
         Scanner reading = new Scanner(System.in);
         file = reading.nextLine();
         pathFile = new StringBuilder(path).append(file).toString();
-        System.out.println(pathFile);
-        try {
+
+          try {
             BufferedWriter saving = new BufferedWriter(new FileWriter(pathFile));
+            File urlPathFile = new File(pathFile);
+            System.out.print("Sciezka do pliku: " + urlPathFile.getAbsolutePath());
+            System.out.println("\n");
 
         } finally {
             if (saving != null) {
                 saving.close();
             }
         }
-        System.out.print("Sciezka do pliku: " + pathFile);
+
     }
 
     void getMessage() throws IOException {
 
         try {
-
-
             Scanner reading = new Scanner(System.in);
             System.out.print("#### Aby wyczyscic plik wpisz \"null\" ####\n");
             BufferedWriter saving = new BufferedWriter(new FileWriter(pathFile, true));
@@ -48,6 +56,7 @@ class TakeWriter  {
 
         } while (!message.equals(""));
             saving.close();
+            reading.close();
 
         } finally {
             if (saving != null) {
@@ -73,7 +82,6 @@ public class TakeFileWriter {
 
         start.setPathFile();
         start.getMessage();
-
 
     }
 }
