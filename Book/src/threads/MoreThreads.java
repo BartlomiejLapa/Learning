@@ -27,20 +27,21 @@ public class MoreThreads {
         System.out.println("Głowny watek");
         MyThread2 mt[] = new MyThread2[4];
 
-        for(int i=0; i<mt.length; i++) {
-        mt[i] = new MyThread2("Wątek nr" + i);
+        for (int i = 0; i < mt.length; i++) {
+            mt[i] = new MyThread2("Wątek nr" + i);
         }
 
-
-
-        for (int i=0; i<50; i++) {
+        do {
+        for (int i = 0; i < 50; i++) {
             System.out.print(".");
-            try {
-                Thread.sleep(100);
-            } catch (InterruptedException exc) {
-                System.out.println("Przerwanie wątku zewnętrznego");
+
+                try {
+                    Thread.sleep(100);
+                } catch (InterruptedException exc) {
+                    System.out.println("Przerwanie wątku zewnętrznego");
+                }
+                System.out.println("Koniec wątku wewnętrznego");
             }
-            System.out.println("Koniec wątku wewnętrznego");
-        }
+        } while (mt[0].thrd.isAlive());
     }
 }
