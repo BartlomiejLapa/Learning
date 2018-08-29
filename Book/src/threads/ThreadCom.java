@@ -16,6 +16,7 @@ class TicTock {
 
         try {
             while (!state.equals("tocked")) {
+                Thread.sleep(500);
                 wait();
             }
         } catch (InterruptedException exc) {
@@ -37,6 +38,7 @@ class TicTock {
 
         try {
             while (!state.equals("ticked")) {
+                Thread.sleep(500);
                 wait();
             }
         } catch (InterruptedException exc) {
@@ -59,11 +61,11 @@ class MyThreadCom implements Runnable{
     public void run() {
 
         if (thrd.getName().compareTo("tick") == 0) {
-            for (int i = 0; i < 5; i++) tt0b.tick(true);
+            for (int i = 0; i < 10; i++) tt0b.tick(true);
             tt0b.tick(false);
 
         } else {
-            for (int i = 0; i < 5; i++) tt0b.tock(true);
+            for (int i = 0; i < 10; i++) tt0b.tock(true);
             tt0b.tock(false);
         }
     }
