@@ -62,8 +62,8 @@ class TrafficLightSimulator implements Runnable {
                 color = TrafficLightColor.YELLOW;
                 ifGreen = true;
         }
-                changed = true;
-                notify();
+        changed = true;
+        notify();
     }
 
     synchronized void waitForChange() {
@@ -72,6 +72,7 @@ class TrafficLightSimulator implements Runnable {
             while (!changed) {
                 wait();
             }
+            changed = false;
         } catch (InterruptedException exc) {
             System.out.println("Wątek zmiany swiatel został przerwany" + exc + " nazwa wątku: " + thrd.getName() );
         }
@@ -86,7 +87,7 @@ class TrafficLightSimulator implements Runnable {
 }
 public class TrafficLight {
     public static void main(String args[]) {
-        TrafficLightSimulator t1 = new TrafficLightSimulator(TrafficLightColor.RED);
+        TrafficLightSimulator t1 = new TrafficLightSimulator();
 
         for (int i=0; i <12; i++) {
             System.out.println(t1.getColor());
