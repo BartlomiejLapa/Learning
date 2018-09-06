@@ -24,12 +24,12 @@ class NAGen<N, A> {
 public class NamesAges {
     public static void main(String args[]) {
         NAGen<String, Integer> obj = new NAGen<>("Kamil", 55);
+        NAGen<Double, String> obj2 = new NAGen<>(66.69, "zł");
 
 
-        String n = obj.showName();
-        int a = obj.showAge();
 
-        System.out.println("Imie: " + n + " " + "wiek: " + a);
+        System.out.println("Imie: " + obj.showName() + " " + ",wiek: " + obj.showAge());
+        System.out.println("Stan konta: " + obj2.showName() + obj2.showAge());
 
 
     }
