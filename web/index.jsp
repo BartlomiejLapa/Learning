@@ -20,5 +20,7 @@
             <input type="submit" value="OK" />
             
         </form>
+        <br>
+        <a href="Session.do">Sesja</a>
     </body>
 </html>
